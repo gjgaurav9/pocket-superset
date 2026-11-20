@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<meta name="theme-color" content="#0e1412" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3f5f2" media="(prefers-color-scheme: light)">
+<title>Pocket Superset</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon-192.png">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="top" id="top">
+  <button class="back" id="back" hidden aria-label="Back to all sessions">‹</button>
+  <div class="top-title">
+    <h1 id="heading">Pocket Superset</h1>
+    <p id="subheading" class="sub">Claude sessions on your laptop</p>
+  </div>
+  <span class="live" id="live" title="Connection"><i></i><span id="live-text">connecting</span></span>
+</header>
+
+<main id="list-view">
+  <div class="filters" role="tablist" aria-label="Filter sessions">
+    <button class="chip on" data-filter="all" role="tab" aria-selected="true">All <b id="n-all">0</b></button>
+    <button class="chip" data-filter="you" role="tab" aria-selected="false">Needs you <b id="n-you">0</b></button>
+    <button class="chip" data-filter="working" role="tab" aria-selected="false">Working <b id="n-working">0</b></button>
+  </div>
+  <p class="banner" id="list-error" hidden></p>
+  <div id="cards" class="cards"></div>
+  <p class="empty" id="empty" hidden>No Claude sessions are running in Superset right now. Start one on the laptop and it shows up here.</p>
+  <button class="alerts" id="alerts" hidden>Turn on alerts when a session finishes or needs you</button>
+</main>
+
+<main id="chat-view" hidden>
+  <div id="turns" class="turns" aria-live="polite"></div>
+  <section class="screen" id="screen-box">
+    <button class="screen-toggle" id="screen-toggle" aria-expanded="false">Live screen</button>
+    <pre id="screen" hidden></pre>
+  </section>
+  <section class="ask" id="ask" hidden>
+    <p id="ask-q">Claude is asking</p>
+    <div id="ask-btns" class="ask-btns"></div>
+  </section>
+  <section class="sheet" id="sheet" hidden>
+    <p id="sheet-msg"></p>
+    <div class="sheet-btns" id="sheet-btns"></div>
+  </section>
+  <form class="compose" id="compose" autocomplete="off">
+    <label for="prompt" class="sr">Prompt</label>
+    <textarea id="prompt" rows="1" placeholder="Next prompt for Claude…" enterkeyhint="send"></textarea>
+    <div class="compose-row">
+      <button type="button" class="ghost" id="stop" hidden>Stop</button>
+      <span class="mode" id="mode"></span>
+      <button type="submit" id="send">Send</button>
+    </div>
+  </form>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
