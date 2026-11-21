@@ -25,10 +25,9 @@ phone.
 
 1. **Run the bridge.** `./scripts/install.sh`. It copies the app to `~/.pocket-superset/app`
    (launchd can't start programs from Desktop), starts it on port 8780 and prints the log.
-   If the log says *Not logged in*, the CLI can't see your desktop login from launchd. Create
-   a Paradev API key and store it in the Keychain:
-   `security add-generic-password -U -s pocket-superset-paradev -a "$USER" -w 'sk_live_…'`,
-   then run `install.sh` again.
+   If the log says *Not logged in*, the CLI has no login of its own (inside Superset terminals
+   it borrows the desktop app's). Run `superset auth login` once, then `install.sh` again.
+   An API key in the Keychain (`pocket-superset-paradev`) also works if you have one.
 2. **Reach it from the phone.** Open the Tailscale app on the Mac and sign in. Install Tailscale
    on the phone with the same account. Then run `./scripts/phone-link.sh` and open the
    `https://…ts.net` address it prints in Chrome on the phone.

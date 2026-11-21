@@ -47,6 +47,7 @@ echo "Pocket Superset is running on http://127.0.0.1:$PORT"
 echo "Log: $DATA/server.log"
 tail -n 3 "$DATA/server.log" || true
 echo
-echo "If the log says 'Not logged in', store a Paradev API key for the service:"
-echo "  security add-generic-password -U -s pocket-superset-paradev -a \"\$USER\" -w 'sk_live_…'"
-echo "  then run this script again."
+if grep -q "Not logged in\|auth login" <(tail -n 3 "$DATA/server.log" 2>/dev/null); then
+  echo "The Superset CLI has no login of its own, so the service can't use it."
+  echo "Run: superset auth login   (then run this script again)"
+fi
