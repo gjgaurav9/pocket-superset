@@ -9,6 +9,17 @@ It only talks to the laptop's Superset CLI (`snapshot`, `terminals read`, `termi
 reads Claude's own transcript files. No remote desktop, no mouse control, no shell from the
 phone.
 
+## Status (21 Nov 2026)
+
+- **Works on the laptop.** The bridge runs as a background service at `http://127.0.0.1:8780`
+  and was tested live: pairing, session cards, the live conversation stream, sending a prompt
+  and answering Claude's folder-trust menu from the bridge.
+- **Phone access is on hold.** On a company-managed Mac, every route to the phone is closed for
+  now. Starting Tailscale needs admin rights, Claude Remote Control is disabled by the
+  organization's policy, and Paradev's web links only redirect to the desktop app. The next step
+  is the admin enabling Remote Control or approving Tailscale. On a personal Mac, the setup
+  below works as written.
+
 ## What's in it
 
 | Path | What it does |
